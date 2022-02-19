@@ -1,0 +1,107 @@
+#Implement random lib for the car door and player selection door randomly.
+import random
+
+#Define variables for the without change selection station
+win = 0
+lose = 0
+count = 100000
+
+#Createing while loop for the 100000 times loop
+while count > 0:
+    #Defining the array
+    door=["a","b","c"]
+    #Determining the door where the car will be
+    carNumber = random.randint(0, 2)
+    #Change the variable of the car door after that we will use for the comparison
+    door[carNumber] = "car"
+    #Determining the door for the player will be chose
+    playerSelection = random.randint(0,2)
+    
+    #Comparison will be starting here
+    if(door[playerSelection] == "car"):
+        #If the value of the door chosen by the player is a car, the win is increased by 1
+        win = win + 1
+    else:
+        #If the value of the door chosen by the player is not a car, the lose is increased by 1
+        lose = lose +  1
+    #While loop value should be decreased by 1 every loop    
+    count = count - 1
+
+#We are quiting the loop and printing the results for without changing the door
+print("Win Number Without Change Door: ",win)
+print("Lose Number Without Change Door: ",lose)
+percent=(win/100000)*100
+print("Win Percent Without Change Door: ",percent)   
+
+#Define variables for the with change selection station
+win2 = 0
+lose2 = 0
+count2 = 100000
+
+#Createing while loop for the 100000 times loop. This time player will chanege first selection after 
+while count2 > 0:
+    #Again define array for 3 door
+    door=["a","b","c"]
+    #Determining the door where the car will be
+    carNumber = random.randint(0, 2)
+    #Change the variable of the car door after that we will use for the comparison
+    door[carNumber] = "car"
+    #Determining the door for the player will be chose
+    playerSelection = random.randint(0,2)
+    
+    #Here we are making the player selection reverse
+    if(carNumber==0 and playerSelection!=2):
+        #Here if car door 0 and player selection is not 2 we will change the door with ignoring the 3rd door
+        if(playerSelection==0):
+            playerSelection=1
+        else:
+            playerSelection=0
+    elif(carNumber==0 and playerSelection!=1):
+        #Here if car door 0 and player selection is not 1 we will change the door with ignoring the 2nd door
+        if(playerSelection==0):
+            playerSelection=2
+        else:
+            playerSelection=0
+    elif(carNumber==1 and playerSelection!=0):
+        #Here if car door 1 and player selection is not 0 we will change the door with ignoring the 1st door
+        if(playerSelection==1):
+            playerSelection=2
+        else:
+            playerSelection=1
+    elif(carNumber==1 and playerSelection!=2):
+        #Here if car door 1 and player selection is not 2 we will change the door with ignoring the 3rd door
+        if(playerSelection==0):
+            playerSelection=1
+        else:
+            playerSelection=0
+    elif(carNumber==2 and playerSelection!=0):
+        #Here if car door 2 and player selection is not 0 we will change the door with ignoring the 1st door
+        if(playerSelection==1):
+            playerSelection=2
+        else:
+            playerSelection=1
+    elif(carNumber==2 and playerSelection!=1):
+        #Here if car door 1 and player selection is not 1 we will change the door with ignoring the 2nd door
+        if(playerSelection==0):
+            playerSelection=2
+        else:
+            playerSelection=0
+    #Here after the change player door we decide he/she win or lost    
+    if(door[playerSelection] == "car"):
+        win2 = win2 + 1
+    else:
+        lose2 = lose2 +  1
+    #While loop value should be decreased by 1 every loop
+    count2 = count2 - 1
+    
+#We are quiting the loop and printing the results for with changing the door    
+print("//////////////////////////////////////////////////")
+print("Win Number With Change Door: ",win2)
+print("Lose Number With Change Door: ",lose2)
+percent=(win2/100000)*100
+print("Win Percent With Change Door: ",percent)  
+    
+
+
+
+
